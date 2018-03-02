@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{orderItem.originCity}}--{{orderItem.destinationCity}}</div>
+    <div>{{item.originCity}}--{{item.destinationCity}}</div>
   </div>
 </template>
 
@@ -9,10 +9,15 @@
 export default {
   name:"orderlist",
   props:{
-    orderItem:{}
+    orderItem:{
+      type:Object,
+      required:true,
+      default:{}
+    }
   },
   data(){
       return {
+        item:this.orderItem
       }
   },
   methods:{

@@ -2,15 +2,16 @@
   <div>
     <div>{{title}}</div>
     <button @click="changeTitle">值改变</button>
-    <transition>
-        <orderlist v-for="item of orderList" :key="item.consignGuid" orderItem = item></orderlist>
-    </transition>
+    <vue-lazy-component>
+        <orderlist v-for="item of orderList" :key="item.consignGuid" :orderItem = item></orderlist>
+    </vue-lazy-component>
   </div>
 </template>
 <script>
 
 import common from "../assets/js/common.js";
 import orderlist from "./orderList.vue";
+import vueLazyComponent from "vue-lazy-component";
 
 export default {
   name:"orderPage",
@@ -37,11 +38,13 @@ export default {
           pageIndex:1,
         },
         orderList: [],
+        listshow:'',
         title:'初始值'
       }
   },
   components:{
-      orderlist:orderlist
+      orderlist:orderlist,
+      vueLazyComponent:vueLazyComponent
   },
   methods:{
     getOrderList(){
@@ -54,7 +57,7 @@ export default {
     },
     changeTitle(){
       this.title = "第一个改变的值"
-    }
+    },
   },
   watch:{
     title: function(val,oldval){
@@ -66,3 +69,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.enterClass{
+    background-color: #333; 
+}
+</style>
+
