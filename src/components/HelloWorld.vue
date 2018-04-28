@@ -31,14 +31,16 @@ export default {
     }
   },
   created(){
-    console.log('created')
+    console.log('created');
+    console.log(this);
+    console.log(this.$options.optionVal)
   },
   methods:{
     toast(){
 //        alert(this.msg)
       this.$router.push({path:'firstPage',query:{msg:'跳转到第一个页面的'}})
     }
-  }
+  },
 }
 </script>
 

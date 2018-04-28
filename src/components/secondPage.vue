@@ -10,6 +10,8 @@
             <button @click="showData()">数据获取测试</button>
         </div>
         <from-node :invalue.sync="initval"></from-node>
+        <div id="mountNode"></div>
+        <router-link to="tick">跳转tick</router-link>
     </div>
 </template>
 
@@ -49,8 +51,11 @@
     methods:{
         changeInit(){
             console.log('dasda')
-            dialog.showDialog()
+            // dialog.showDialog()
             this.$store.commit('changeTest','第二个页面改变的值');
+            this.$nextTick(function(){
+                console.log(this.$store.state.test);
+            });
         },
         cancleClick(){
             this.isShow = false
